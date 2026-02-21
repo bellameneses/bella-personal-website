@@ -441,3 +441,15 @@ textarea[readonly].custom-textbox {
     box-shadow: 0 0 0 0 rgba(23, 162, 184, 0);
   }
 }
+
+:root {
+    --radius-sm: 12px;
+    --radius-md: 16px;
+    --radius-lg: 20px;
+    --shadow-sm: 0 3px 10px rgba(0, 0, 0, 0.08);
+    --shadow-md: 0 6px 15px rgba(0, 0, 0, 0.15);
+    --shadow-lg: 0 15px 35px rgba(0, 0, 0, 0.12);
+    --gradient-bg: linear-gradient(to bottom right, #eef4ff, #f7ecff);
+    --gradient-nav: linear-gradient(135deg, #4b6cb7, #182848);
+    --primary-blue: #4f6df5;
+}

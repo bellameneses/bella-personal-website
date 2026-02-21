@@ -254,3 +254,48 @@
 
   $(init);
 })();
+
+function setActiveNavLink() {
+  // gets "index.html" or "about.html" etc
+  const current = (window.location.pathname.split("/").pop() || "index.html").toLowerCase();
+
+  document.querySelectorAll(".topnav-link").forEach((link) => {
+    const href = (link.getAttribute("href") || "").toLowerCase();
+
+    link.classList.remove("is-active");
+
+    // match exact file (index.html, about.html, etc)
+    if (href === current) {
+      link.classList.add("is-active");
+    }
+  });
+}
+
+// menu.html loads asynchronously, so we wait until links exist
+function waitForMenuThenSetActive() {
+  const links = document.querySelectorAll(".topnav-link");
+  if (links.length > 0) {
+    setActiveNavLink();
+  } else {
+    setTimeout(waitForMenuThenSetActive, 50);
+  }
+}
+
+document.addEventListener("DOMContentLoaded", waitForMenuThenSetActive);
+
+function setActiveNavLink() {
+  const current = (window.location.pathname.split("/").pop() || "index.html").toLowerCase();
+
+  document.querySelectorAll(".topnav-link").forEach((link) => {
+    const href = (link.getAttribute("href") || "").toLowerCase();
+    link.classList.toggle("is-active", href === current);
+  });
+}
+
+function waitForMenuThenSetActive() {
+  const links = document.querySelectorAll(".topnav-link");
+  if (links.length) setActiveNavLink();
+  else setTimeout(waitForMenuThenSetActive, 50);
+}
+
+document.addEventListener("DOMContentLoaded", waitForMenuThenSetActive);
